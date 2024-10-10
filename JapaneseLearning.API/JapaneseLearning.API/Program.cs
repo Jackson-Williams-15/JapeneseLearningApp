@@ -18,6 +18,8 @@ internal class Program
     private static WebApplication BuildApp(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        DotNetEnv.Env.TraversePath().Load();
+        builder.Configuration.AddEnvironmentVariables();
 
         // Database connection string from environment variables
 var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING")
