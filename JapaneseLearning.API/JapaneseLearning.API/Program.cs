@@ -25,6 +25,17 @@ internal class Program
 var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING")
     ?? throw new InvalidOperationException("Connection string not found in environment variables.");
 
+    // Allow any origin for local development purposes (adjust this for production)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 
         // Add services, Use the connection string for your DbContext
 
@@ -42,6 +53,8 @@ var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING")
 
         return builder.Build();
     }
+
+    
 
     private static void ConfigureApp(WebApplication app)
     {
