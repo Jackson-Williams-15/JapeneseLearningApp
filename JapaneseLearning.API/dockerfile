@@ -1,0 +1,23 @@
+# Use the .NET SDK image for building the application
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /source
+
+# Copy everything to the container and restore the dependencies
+COPY . .
+RUN dotnet restore
+
+# Publish the application to the /app directory
+RUN dotnet publish -c Release -o /app
+
+# Build the runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+
+# Copy the published application from the build stage
+COPY --from=build /app .
+
+# Expose the ports for the application
+EXPOSE 80
+
+# Set the entry point to run your application
+ENTRYPOINT ["dotnet", "JapaneseLearning.dll"]
