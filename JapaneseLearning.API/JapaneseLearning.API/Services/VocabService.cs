@@ -57,49 +57,37 @@ namespace JapaneseLearning.Services
             var externalVocab = await FetchFromJishoAPI(word);
 
             if (externalVocab != null)
+    {
+        // Check if the word already exists in the database before adding
+        var duplicateCheck = _context.Vocabulary.Any(v => v.Word == externalVocab.Word);
+
+        if (!duplicateCheck) // Only add if it doesn't exist
+        {
+            // Convert Kana (Reading) to Romaji
+            if (!string.IsNullOrEmpty(externalVocab.Reading))
             {
-                // Convert Kana (Reading) to Romaji
-                if (!string.IsNullOrEmpty(externalVocab.Reading))
-                {
-                    externalVocab.Romaji = KanaToRomajiConverter.ConvertKanaToRomaji(externalVocab.Reading);
-                }
-
-                // Add new vocabulary if it's not in the database
-                if (vocab == null)
-                {
-                    _context.Vocabulary.Add(externalVocab);
-                     Console.WriteLine("Added new vocabulary to the database");
-                }
-                else
-                {
-                    // Update existing vocabulary with new data
-                    vocab.Reading = externalVocab.Reading;
-                    vocab.Meaning = externalVocab.Meaning;
-                    vocab.LastFetched = DateTime.Now;
-
-                    // Convert Romaji before saving
-                    vocab.Romaji = KanaToRomajiConverter.ConvertKanaToRomaji(vocab.Reading);
-                }
-
-                // Save changes to the database
-           await _context.SaveChangesAsync();
-Console.WriteLine("Changes saved to the database. Now fetching...");
-
-var vocabCheck = _context.Vocabulary.FirstOrDefault(v => v.Word == externalVocab.Word);
-if (vocabCheck != null)
-{
-    Console.WriteLine($"Vocab in DB: {vocabCheck.Word}");
-}
-else
-{
-    Console.WriteLine("Vocab not found in the database after saving.");
-}
-
-                return externalVocab;
+                externalVocab.Romaji = KanaToRomajiConverter.ConvertKanaToRomaji(externalVocab.Reading);
             }
 
-            // Return null if no data found
-            return null;
+            // Add new vocabulary to the database
+            _context.Vocabulary.Add(externalVocab);
+            Console.WriteLine("Added new vocabulary to the database");
+
+            // Save changes to the database
+            await _context.SaveChangesAsync();
+            Console.WriteLine("Changes saved to the database. Now fetching...");
+        }
+        else
+        {
+            Console.WriteLine("Duplicate word detected. Skipping addition to the database.");
+        }
+
+        // Return the fetched vocabulary (whether added or not)
+        return externalVocab;
+    }
+
+    // Return null if no data found
+    return null;
         }
 
         // Method to fetch data from Jisho API
