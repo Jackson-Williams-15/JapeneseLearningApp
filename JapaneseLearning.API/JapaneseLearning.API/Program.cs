@@ -37,7 +37,7 @@ builder.Services.AddCors(options =>
 });
 
 
-        // Add services, Use the connection string for your DbContext
+        // Add services, Use the connection string for DbContext
 
         builder.Services.AddDbContext<LearningAppContext>(options =>
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
