@@ -22,7 +22,6 @@ const LandingPage = () => {
           </div>
           {/* Image Section */}
           <div className="lg:w-1/2 flex flex-row justify-center items-center space-x-4 mt-8 lg:mt-0">
-            {/* Replace with your own image paths or imports */}
             <TowerImg />
             <CherryImg />
           </div>
