@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        card: "#EAEAEA", // Explicitly add 'card' to Tailwind colors
+        text: "#ffffff", // Ensure text color is included
+      },
+    },
   },
   plugins: [
     require("@tailwindcss/typography"), require('daisyui'),
@@ -13,12 +18,13 @@ export default {
   daisyui: {
     themes: [
       {
-        mytheme: {  // 👈 Custom Theme Name
+        mytheme: {
           "primary": "#4E3A4F", 
           "secondary": "#998FD5",
-          "accent": "#50e3c2",
+          "accent": "#BCDCAC",
           "neutral": "#1c1c1c",
-          "text": "#ffffff",
+          "text": "#FDFDFD",
+          "card": "#EAEAEA",
           "base-100": "#2D222D",
           "info": "#3abff8",
           "success": "#36d399",
