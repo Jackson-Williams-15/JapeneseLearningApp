@@ -13,10 +13,10 @@ const NavBar = () => {
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center">
-          <button className="btn text-md btn-ghost">Chat</button>
-          <button className="btn text-md btn-ghost">Vocabulary</button>
-          <button className="btn text-md btn-ghost">Writing</button>
-          <button className="btn text-md btn-ghost">Resources</button>
+          <button className="btn text-lg btn-ghost">Chat</button>
+          <button className="btn text-lg btn-ghost">Vocabulary</button>
+          <button className="btn text-lg btn-ghost">Writing</button>
+          <button className="btn text-lg btn-ghost">Resources</button>
         </div>
       </div>
 
