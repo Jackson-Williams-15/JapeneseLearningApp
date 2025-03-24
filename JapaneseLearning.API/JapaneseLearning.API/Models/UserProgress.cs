@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+// link to lessons later
 namespace JapaneseLearning.Models {
     
     public class UserProgress {
