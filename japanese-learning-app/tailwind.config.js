@@ -10,6 +10,9 @@ export default {
         card: "#EAEAEA", // Explicitly add 'card' to Tailwind colors
         text: "#ffffff", // Ensure text color is included
       },
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [
@@ -31,6 +34,7 @@ export default {
           "warning": "#fbbf24",
           "error": "#ef4444",
           "--rounded-btn": "5rem",
+          "font-family": "Poppins, sans-serif",
         },
       },
       "light", // Keep default light theme

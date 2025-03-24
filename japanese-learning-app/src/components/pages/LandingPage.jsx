@@ -16,11 +16,11 @@ const LandingPage = () => {
 
           {/* Text Content */}
           <div className="lg:w-5/6 text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Learn Japanese Effortlessly</h1>
+            <h1 className="text-4xl font-sans font-bold">Learn Japanese Effortlessly</h1>
             <p className="py-6 text-lg text-text">
               Dive into the world of Japanese language and culture with interactive lessons and engaging content.
             </p>
-            <button className="btn btn-wide btn-secondary text-lg">Get Started</button>
+            <button className="btn btn-wide btn-secondary text-lg ">Get Started</button>
           </div>
 
           {/* Image Section */}
@@ -42,7 +42,7 @@ const LandingPage = () => {
 
       {/* Features Section */}
       <section className="py-0 px-6 lg:px-16 bg-primary">
-        <h2 className="text-3xl font-bold text-green-300 mb-8 text-center lg:text-left">FEATURES</h2>
+        <h2 className="text-3xl text-green-300 mb-8 text-center lg:text-left font-light">Features</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           
@@ -98,7 +98,7 @@ const LandingPage = () => {
       {/* About Section */}
       <section>
       <div className="bg-primary py-16 px-6 lg:px-16">
-          <h2 className="text-3xl font-bold text-green-300 mb-4">ABOUT</h2>
+          <h2 className="text-3xl font-light text-green-300 mb-4">About</h2>
           <p className="text-lg text-text">
           Manabu is a free and easy-to-use platform designed to help learners practice Japanese effortlessly. Whether you're a complete beginner or looking to sharpen your skills, Manabu provides interactive lessons, vocabulary exercises, and AI-powered conversations to make learning engaging and effective.
           This website is more than just a learning tool—it's also a personal passion project. Built solo, Manabu is a labor of love aimed at making Japanese accessible to anyone interested. I truly appreciate anyone who takes the time to check it out, and I hope it helps you on your language-learning journey!
