@@ -1,7 +1,7 @@
 using JapaneseLearning.Interfaces;
 using JapaneseLearning.Models;
 using JapaneseLearning.Helpers;
-
+using JapaneseLearning.Data;
 namespace JapaneseLearning.Services
 {
     public class VocabService : IVocabService
