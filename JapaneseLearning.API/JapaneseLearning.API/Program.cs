@@ -5,7 +5,7 @@ using System.Text;
 using System.Globalization;
 using JapaneseLearning.Interfaces;
 using JapaneseLearning.Services;
-
+using JapaneseLearning.Data;
 internal class Program
 {
     private static void Main(string[] args)
@@ -43,7 +43,7 @@ builder.Services.AddCors(options =>
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
         builder.Services.AddHttpClient();
         builder.Services.AddScoped<IVocabService, VocabService>();
-
+        builder.Services.AddScoped<IUserService, AccountService>();
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>
