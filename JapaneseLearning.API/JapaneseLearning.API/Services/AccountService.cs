@@ -27,7 +27,7 @@ public class AccountService : IUserService
 
     public async Task<Users?> Authenticate(Credentials credentials)
     {
-          var user = await _context.Users.Where(u => u.NormalizedUsername == credentials.Username.ToUpper()).FirstOrDefaultAsync();
+          var user = await _context.Users.Where(u => u.Username.ToUpper() == credentials.Username.ToUpper()).FirstOrDefaultAsync();
 
         if (user?.PasswordHash == HashPassword(credentials.Password))
         {
@@ -108,13 +108,13 @@ public class AccountService : IUserService
 
     public async Task<Users> RegisterUser(Credentials credentials)
     {
-         var queryUser = _context.Users.Where(u => u.NormalizedUsername == credentials.Username.ToUpper());
+        var queryUser = _context.Users.Where(u => u.Username.ToUpper() == credentials.Username.ToUpper());
         if (queryUser.FirstOrDefault() is not null)
         {
             throw new Exception("A user with the same username already exists.");
         }
 
-        var duplicateEmail = _context.Users.Where(u => u.NormalizedEmail == credentials.Email.ToUpper()).FirstOrDefault();
+        var duplicateEmail = _context.Users.Where(u => u.Email.ToUpper() == credentials.Email.ToUpper()).FirstOrDefault();
         if (duplicateEmail is not null)
         {
             throw new Exception("User with email already exists");
